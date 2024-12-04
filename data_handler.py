@@ -25,7 +25,7 @@ openai.api_key = proxy_key
 pc = Pinecone(api_key=pinecone_key)
 index = pc.Index('finance')
 
-print(index.describe_index_stats())
+# print(index.describe_index_stats())
 
 def extract_text_from_pdf(pdf_file):
     reader = PdfReader(pdf_file)
