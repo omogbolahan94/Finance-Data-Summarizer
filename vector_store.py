@@ -17,7 +17,7 @@ if __name__ == '__main__':
     index = pc.Index('finance')
 
     # load the dataset
-    loader = DirectoryLoader('/content/drive/My Drive/Finance_Investment_LLM/Data', glob="./*.docx")
+    loader = DirectoryLoader('/data', glob="./*.docx")
     data = loader.load()
 
     print(secret_key)
