@@ -1,10 +1,14 @@
 from dotenv import load_dotenv
 import os
 
+from PyPDF2 import PdfReader
+from docx import Document
+
 from langchain_pinecone import PineconeVectorStore
 from pinecone import Pinecone, ServerlessSpec
-from langchain.document_loaders import DirectoryLoader
+# from langchain_community.document_loaders import DirectoryLoader
 from langchain.text_splitter import RecursiveCharacterTextSplitter, CharacterTextSplitter
+import openai
 # from langchain.embeddings.openai import OpenAIEmbeddings
 
 load_dotenv()
@@ -21,6 +25,7 @@ openai.api_key = proxy_key
 pc = Pinecone(api_key=pinecone_key)
 index = pc.Index('finance')
 
+print(index.describe_index_stats())
 
 def extract_text_from_pdf(pdf_file):
     reader = PdfReader(pdf_file)
@@ -48,7 +53,7 @@ def generate_embedding(text):
 # Function to search for documents in Pinecone
 def search_documents(input_text, top_k=10):
     # Step 1: Generate embedding for the input text
-    query_embedding = generate_embedding(data)
+    query_embedding = generate_embedding(input_text)
 
     # Step 2: Query Pinecone with the embedding
     search_results = index.query(
