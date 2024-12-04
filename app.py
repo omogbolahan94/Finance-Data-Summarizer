@@ -25,12 +25,15 @@ if uploaded_file:
     
     # split the document
     text_splitter_recursive = RecursiveCharacterTextSplitter(chunk_size=1000, chunk_overlap=20)
-    company_data_chunks = text_splitter_recursive.split_text(prompt.page_content)
+    company_data_chunks = text_splitter_recursive.split_text(document_text)
+    
     # Embed the document into Pinecone
     for data in company_data_chunks:
-    embedding = generate_embedding(data)
-    index.upsert([
-        {"id": f"doc-{hash(data)}", "values": embedding, "metadata": {"text": data}}
-    ])
+        embedding = generate_embedding(data)
+        index.upsert([
+            {"id": f"doc-{hash(data)}", "values": embedding, "metadata": {"text": data}}
+        ])
     
     st.success("Document successfully embedded into the vector database!")
+
+    
