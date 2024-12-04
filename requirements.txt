@@ -100,7 +100,7 @@ pillow==11.0.0
 pinecone==5.4.1
 pinecone-client==5.0.1
 pinecone-plugin-inference==2.0.0
-pinecone-plugin-interface==0.0.7
+pinecone-plugin-interface==1.0.3
 portalocker==3.0.0
 propcache==0.2.1
 proto-plus==1.25.0
