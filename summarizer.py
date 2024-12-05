@@ -23,24 +23,23 @@ def summarize_results(generated_prompt, financials=None):
             "You know the following context information."
             f"{generated_prompt}"
             "Question:" 
-            "Using the retrieved result first combined with real time finantial figures retrieved from the internet for the same company in the retrieved result, create an investment memo that captures all of the following header:" 
-            "Product/Services Overview:\n\n"
-            "Value Proposition:\n\n"
-            "Customer Segment:\n\n"
-            "Revenue Model:\n\n"
-            "Number of Employee and Department:\n\n"
-            "The Key Management Teams, Their Background and Roles:\n\n"
-            "Market Overview:\n\n"
-            "Investment Thesis:\n\n"
-            "and Risk:\n\n"
-            "Make sure to capture all the important figures from the retrieved result."
+            """Using the retrieved result, Capture all figures and generate an investment memo that captures all of the following headers: 
+            Product/Services Overview:\n\n
+            Value Proposition:\n\n
+            Customer Segment:\n\n
+            Revenue Model:\n\n
+            Number of Employee and Department:\n\n
+            The Key Management Teams, Their Background and Roles:\n\n
+            Market Overview:\n\n
+            Investment Thesis:\n\n
+            and Risk:\n\n"""
         )
 
     # Call the GPT model for summarization
     response = openai.ChatCompletion.create(
         model="gpt-3.5-turbo",
         messages=[
-            {"role": "system", "content": "You are an exceptional investment experts that creates investment memo."},
+            {"role": "system", "content": "You are an helpful experts that creates investment memo."},
             {"role": "user", "content": prompt}
         ]
     )
