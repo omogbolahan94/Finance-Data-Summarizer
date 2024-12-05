@@ -1,6 +1,6 @@
 import openai
 
-def summarize_results(generated_prompt, financials=None):
+def summarize_results(generated_prompt, company_name, financials=None):
     if financials is not None:
         prompt = (
             "You know the following context information."
@@ -20,7 +20,7 @@ def summarize_results(generated_prompt, financials=None):
         )
     else:
         prompt = (
-            f"""You know the following context information: 
+            f"""You know the following context information for the company {company_name}: 
             
             {generated_prompt}
             

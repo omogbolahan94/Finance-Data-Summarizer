@@ -14,6 +14,9 @@ import save_document
 # Title of the Streamlit App
 st.title("Private Intel RAG")
 
+# Collect the Company's Name
+company_name = st.text_input("Enter the company's name:")
+
 # Upload the Financial Document
 uploaded_file = st.file_uploader("Upload a financial document (.pdf or .docx):", type=["pdf", "docx"])
 
@@ -29,9 +32,10 @@ if uploaded_file:
     company_data_chunks = text_splitter_recursive.split_text(document_text)
     
     # Embed the document into Pinecone
+    index.delete(delete_all=True)
+
     for data in company_data_chunks:
         embedding = generate_embedding(data)
-        index.delete(delete_all=True)
         index.upsert([
             {"id": f"doc-{hash(data)}", "values": embedding, "metadata": {"text": data}}
         ])
@@ -58,8 +62,8 @@ if uploaded_file:
     finantial_data = None # get_financial_data()
 
     if finantial_data is None:
-        summary = summarize_results(generated_prompt)
+        summary = summarize_results(generated_prompt, company_name)
     else:
-        summary = summarize_results(generated_prompt)
+        summary = summarize_results(generated_prompt, company_name)
 
     save_document.save_summary(summary)
