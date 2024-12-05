@@ -1,3 +1,4 @@
+import streamlit as st
 from dotenv import load_dotenv
 import os
 
@@ -13,9 +14,13 @@ import openai
 
 load_dotenv()
 
-pinecone_key = os.getenv('PINECONE_API_TOKEN')
-proxy_key = os.getenv('OPENAI_PROXY_KEY')
-base_url = os.getenv('BASE_URL')
+# pinecone_key = os.getenv('PINECONE_API_TOKEN')
+# proxy_key = os.getenv('OPENAI_PROXY_KEY')
+# base_url = os.getenv('BASE_URL')
+
+pinecone_key = st.secrets['PINECONE_API_TOKEN']
+proxy_key = st.secrets['OPENAI_PROXY_KEY']
+base_url = st.secrets['BASE_URL']
 
 # Set the proxy API configuration
 openai.api_base = base_url
