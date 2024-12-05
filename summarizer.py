@@ -24,15 +24,8 @@ def summarize_results(generated_prompt, financials=None):
             f"{generated_prompt}"
             "Question:" 
             """Using the retrieved result, Capture all figures and generate an investment memo that captures all of the following headers: 
-            Product/Services Overview:\n\n
-            Value Proposition:\n\n
-            Customer Segment:\n\n
-            Revenue Model:\n\n
-            Number of Employee and Department:\n\n
-            The Key Management Teams, Their Background and Roles:\n\n
-            Market Overview:\n\n
-            Investment Thesis:\n\n
-            and Risk:\n\n"""
+               Enure that the memo is well structured.
+            """
         )
 
     # Call the GPT model for summarization
