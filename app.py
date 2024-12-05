@@ -57,7 +57,7 @@ if uploaded_file:
     # crawl data from the web
     finantial_data = None # get_financial_data()
 
-    if finantial_data None:
+    if finantial_data is None:
         summary = summarize_results(generated_prompt)
     else:
         summary = summarize_results(generated_prompt)
