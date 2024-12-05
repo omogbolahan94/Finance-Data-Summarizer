@@ -31,6 +31,7 @@ if uploaded_file:
     # Embed the document into Pinecone
     for data in company_data_chunks:
         embedding = generate_embedding(data)
+        index.delete(delete_all=True)
         index.upsert([
             {"id": f"doc-{hash(data)}", "values": embedding, "metadata": {"text": data}}
         ])
@@ -56,7 +57,7 @@ if uploaded_file:
     # crawl data from the web
     finantial_data = None # get_financial_data()
 
-    if finantial_data is None:
+    if finantial_data None:
         summary = summarize_results(generated_prompt)
     else:
         summary = summarize_results(generated_prompt)
