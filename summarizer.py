@@ -21,13 +21,14 @@ def summarize_results(generated_prompt, financials=None):
     else:
         prompt = (
             f"""You know the following context information: 
+            
             {generated_prompt}
             
             Question: 
-            Using the retrieved result, use the company name from the context information as the header of the 
-            output and generate an investment memo. Do not dispaly any information outside of the context 
-            information. Generated response should be in a well structured format and easy to read and understand.
-
+            Using the context information, generate an investment memo. Do not dispaly any information outside of 
+            the context information. Generated response should be in a well structured format and easy to read and understand.
+            Include all numbers and financial data and analyze them from the context information.
+            
             Response:
             """
         )

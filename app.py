@@ -25,7 +25,7 @@ if uploaded_file:
         document_text = extract_text_from_docx(uploaded_file)
     
     # split the document
-    text_splitter_recursive = TokenTextSplitter(chunk_size=150, chunk_overlap=20)
+    text_splitter_recursive = TokenTextSplitter(chunk_size=200, chunk_overlap=30)
     company_data_chunks = text_splitter_recursive.split_text(document_text)
     
     # Embed the document into Pinecone
