@@ -23,7 +23,7 @@ def summarize_results(generated_prompt, financials=None):
             "You know the following context information."
             f"{generated_prompt}"
             "Question:" 
-            "Using the retrieved result first combined with internet result, create an investment memo that captures all of the following header:" 
+            "Using the retrieved result first combined with real time finantial figures retrieved from the internet for the same company in the retrieved result, create an investment memo that captures all of the following header:" 
             "Product/Services Overview:\n\n"
             "Value Proposition:\n\n"
             "Customer Segment:\n\n"
@@ -33,6 +33,7 @@ def summarize_results(generated_prompt, financials=None):
             "Market Overview:\n\n"
             "Investment Thesis:\n\n"
             "and Risk:\n\n"
+            "Make sure to capture all the important figures from the retrieved result."
         )
 
     # Call the GPT model for summarization
