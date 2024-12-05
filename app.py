@@ -3,7 +3,7 @@ from langchain.prompts import PromptTemplate
 from langchain.llms import OpenAI
 from langchain.chains import LLMChain
 from langchain.vectorstores import Pinecone
-from langchain.text_splitter import RecursiveCharacterTextSplitter, CharacterTextSplitter
+from langchain.text_splitter import RecursiveCharacterTextSplitter, CharacterTextSplitter, TokenTextSplitter
 import pinecone
 from fpdf import FPDF
 from data_handler import extract_text_from_pdf, extract_text_from_docx, generate_embedding, search_documents, index
@@ -25,7 +25,7 @@ if uploaded_file:
         document_text = extract_text_from_docx(uploaded_file)
     
     # split the document
-    text_splitter_recursive = RecursiveCharacterTextSplitter(chunk_size=1000, chunk_overlap=20)
+    text_splitter_recursive = TokenTextSplitter(chunk_size=150, chunk_overlap=20)
     company_data_chunks = text_splitter_recursive.split_text(document_text)
     
     # Embed the document into Pinecone
@@ -39,9 +39,9 @@ if uploaded_file:
 
 
     # extract test from the prompt
-    data = extract_text_from_docx('Prompt_template.docx')
-    text_splitter = RecursiveCharacterTextSplitter(chunk_size=1000, chunk_overlap=20)
-    prompt_chunks = text_splitter.split_text(data)
+    prompt = extract_text_from_docx('Prompt_template.docx')
+    text_splitter = TokenTextSplitter(chunk_size=150, chunk_overlap=20)
+    prompt_chunks = text_splitter.split_text(prompt)
 
 
     generated_prompt = " "
