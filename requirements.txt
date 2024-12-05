@@ -98,6 +98,7 @@ pi_heif==0.21.0
 pikepdf==9.4.2
 pillow==11.0.0
 pinecone==5.4.1
+pinecone-client==5.0.0
 pinecone-plugin-inference==2.0.0
 pinecone-plugin-interface==0.0.7
 portalocker==3.0.0
