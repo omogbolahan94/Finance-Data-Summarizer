@@ -1,10 +1,10 @@
 ## INTRODUCTION
-This is a RAG model
+This is a RAG application
 
 ## OBJECTIVE
-A user uploads private equity data. Using the power of generative AI, this data is then analysed to provide summarized insight and recommendation based on the uploaded data.
+A user uploads private equity data, which is analyzed using the power of generative AI to provide summarized insights and recommendations based on the uploaded data.
 
 ## TOOLS
-1. **OpenAI API:** for text embedding and text summarization model
-2. **Langchain:** text preprocessing and integration with OpenAI
-3. **Streamlit:** app hosting 
+1. **OpenAI API:** For text embedding and summarization models.
+2. **LangChain:** For text preprocessing and integration with OpenAI.
+3. **Streamlit:** For app hosting.
